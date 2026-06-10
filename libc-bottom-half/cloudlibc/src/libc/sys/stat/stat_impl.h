@@ -53,10 +53,10 @@ static inline void to_public_stat(const __wasi_filestat_t *in,
       out->st_mode |= S_IFCHR;
       break;
     case __WASI_FILETYPE_DIRECTORY:
-      out->st_mode |= S_IFDIR;
+      out->st_mode |= S_IFDIR | S_IRWXU;
       break;
     case __WASI_FILETYPE_REGULAR_FILE:
-      out->st_mode |= S_IFREG;
+      out->st_mode |= S_IFREG | S_IRUSR | S_IWUSR;
       break;
     case __WASI_FILETYPE_SOCKET_DGRAM:
     case __WASI_FILETYPE_SOCKET_STREAM:
